@@ -1,3 +1,3 @@
 # hake
 
-## Snake implemented in Haskell with Gloss and ALUT
+**Snake implemented in Haskell with Gloss and ALUT**
