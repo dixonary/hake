@@ -1,0 +1,5 @@
+.stack-work/
+snake-haskell.cabal
+*~
+*.swp
+*.swo
