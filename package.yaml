@@ -1,7 +1,7 @@
 name:                hake
 version:             0.1.0.0
 github:              "dixonary/hake"
-license:             All Rights Reserved (for now!)
+license:             BSD
 author:              "Alex Dixon"
 maintainer:          "alex@dixonary.co.uk"
 copyright:           "2018 Dixonary"
@@ -37,4 +37,4 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - snake-haskell
+    - hake
