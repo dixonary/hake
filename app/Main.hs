@@ -128,17 +128,21 @@ render world@World{..} = pictures $
 handleInput :: Event -> World -> World
 
 -- Pattern match to handle character key press (wasd)
-handleInput (EventKey (Char c) K.Down _ _) world@World{..}  =
+handleInput (EventKey (Char c) K.Down _ _) world  =
     let world' = world { dir =
         case c of
-            'w' | lastDir /= Down  -> Up
-            's' | lastDir /= Up    -> Down
-            'a' | lastDir /= Right -> Left
-            'd' | lastDir /= Left  -> Right
-            _   -> dir
+            'w' | lastDir world /= Down  -> Up
+            's' | lastDir world /= Up    -> Down
+            'a' | lastDir world /= Right -> Left
+            'd' | lastDir world /= Left  -> Right
+            _   -> dir world
         }
-    in case state of
-        Title               -> world' { state = Play }
+    in case state world of
+        -- Only change state if the direction has been set!
+        Title               -> world' { state = if dir world' == None
+                                                then Title
+                                                else Play
+                                      }
         _                   -> world'
 
 -- Pattern match to handle Spacebar press
